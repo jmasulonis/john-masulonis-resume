@@ -227,7 +227,7 @@ img {
 
 .h-bars *:before {
   position: absolute;
-  left: -140px;
+  left: -145px;
   top: 4px;
   opacity: 0;
   color: var(--primary-color);
