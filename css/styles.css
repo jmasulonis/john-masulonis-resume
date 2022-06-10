@@ -500,6 +500,7 @@ img {
   }
   .skills-ed .ed-software{
     padding: 0;
+    margin-top: 10px;
   }
   .software > p {
     display: block;
