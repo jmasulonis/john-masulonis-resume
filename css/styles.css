@@ -77,6 +77,9 @@ img {
   justify-content: center;
   align-items: center;
 }
+  .bottom-link{
+    left: 0;
+  }
 .show {
   visibility: visible;
   opacity: 1;
