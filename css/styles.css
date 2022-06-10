@@ -63,7 +63,7 @@ img {
   width: 15%;
 }
 /* Return to Top */
-.top-link, .bottom-link {
+.top-link .bottom-link{
   font-size: 1.7rem;
   position: fixed;
   bottom: 0;
