@@ -63,7 +63,7 @@ img {
   width: 15%;
 }
 /* Return to Top */
-.top-link {
+.top-link .bottom-link {
   font-size: 1.7rem;
   position: fixed;
   bottom: 0;
@@ -78,6 +78,8 @@ img {
   align-items: center;
 }
   .bottom-link{
+    z-index: 1;
+    bottom: 0;
     left: 0;
   }
 .show {
