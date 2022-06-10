@@ -489,6 +489,9 @@ img {
   p {
     display: none;
   }
+  .software > p {
+    display: block;
+  }
   #main-header {
     padding: 2rem;
   }
