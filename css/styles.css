@@ -63,7 +63,7 @@ img {
   width: 15%;
 }
 /* Return to Top */
-.top-link .bottom-link{
+.top-link{
   font-size: 1.7rem;
   position: fixed;
   bottom: 0;
@@ -77,11 +77,7 @@ img {
   justify-content: center;
   align-items: center;
 }
-  .bottom-link{
-    z-index: 1;
-    bottom: 0;
-    left: 0;
-  }
+
 .show {
   visibility: visible;
   opacity: 1;
