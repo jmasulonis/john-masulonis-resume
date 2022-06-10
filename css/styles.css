@@ -482,6 +482,10 @@ img {
   .skills-ed .education h3 {
     font-size: 0.9rem;
   }
+  .ed-software{
+    padding-left: 210px;
+  }
+
 }
 
 @media (max-width: 450px) {
