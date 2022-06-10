@@ -477,7 +477,6 @@ img {
     left: -375px;
   }
   .skills-ed {
-    flex-direction: column;
     padding: 0 25px;
   }
   .skills-ed .education h3 {
@@ -488,6 +487,9 @@ img {
 @media (max-width: 450px) {
   p {
     display: none;
+  }
+  .skills-ed{
+    flex-direction: column;
   }
   .software > p {
     display: block;
