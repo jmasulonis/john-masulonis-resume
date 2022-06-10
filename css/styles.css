@@ -498,7 +498,7 @@ img {
   .skills-ed{
     flex-direction: column;
   }
-  .skills-ed .ed-software{
+.skills-ed .ed-software{
     padding: 0;
     margin-top: 10px;
   }
