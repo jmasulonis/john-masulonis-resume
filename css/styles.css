@@ -498,6 +498,9 @@ img {
   .skills-ed{
     flex-direction: column;
   }
+  .skills-ed .ed-software{
+    padding: 0;
+  }
   .software > p {
     display: block;
   }
