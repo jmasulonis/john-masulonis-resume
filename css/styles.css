@@ -468,6 +468,9 @@ img {
   #timeline ul li:nth-child(even) div {
     left: -475px;
   }
+  .skills-ed .ed-software{
+    padding-left: 250px;
+  }
 }
 @media (max-width: 900px) {
   #timeline ul li div {
