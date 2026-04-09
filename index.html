@@ -1,298 +1,1435 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Styles -->
-    <link rel="stylesheet" href="./css/styles.css" />
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>John Masulonis — Senior Digital Designer</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <!-- Google Font -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>John Masulonis' Resume</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --green: #347f6f;
+        --orange: #f8992c;
+        --cream: #f4efe6;
+        --dark: #1a1a1a;
+        --mid: #666;
+        --max: 860px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* NOISE TEXTURE via SVG filter — same approach as Cisco */
+      body {
+        font-family: "Outfit", sans-serif;
+        color: var(--dark);
+        background-color: var(--cream);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+        overflow-x: hidden;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        background: var(--green);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+        padding: 52px 40px 64px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        pointer-events: none;
+      }
+      .hero-ring-1 {
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .hero-ring-2 {
+        width: 900px;
+        height: 900px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .hero-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 72px;
+      }
+      .hero-logo {
+        width: 44px;
+        height: 44px;
+        animation: fadeIn 0.5s 0.05s both;
+      }
+      .hero-logo svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero-dl {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--orange);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+        transition: opacity 0.2s;
+        animation: fadeIn 0.5s 0.05s both;
+      }
+      .hero-dl:hover {
+        opacity: 0.82;
+      }
+      .hero-dl svg {
+        width: 11px;
+        height: 11px;
+      }
+
+      .hero-eyebrow {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 16px;
+        animation: fadeUp 0.5s 0.15s both;
+      }
+      .hero-name {
+        font-size: clamp(52px, 8vw, 96px);
+        font-weight: 700;
+        color: #fff;
+        line-height: 0.95;
+        letter-spacing: -2.5px;
+        margin-bottom: 20px;
+        animation: fadeUp 0.55s 0.25s both;
+      }
+      .hero-name em {
+        color: var(--orange);
+        font-style: normal;
+      }
+      .hero-desc {
+        font-size: 16px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.75;
+        max-width: 520px;
+        margin: 0 auto 48px;
+        animation: fadeUp 0.55s 0.35s both;
+      }
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 40px;
+        animation: fadeUp 0.5s 0.45s both;
+      }
+      .stat {
+        flex: 1;
+        max-width: 160px;
+        padding: 0 32px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .stat:last-child {
+        border-right: none;
+      }
+      .stat-n {
+        font-size: 44px;
+        font-weight: 700;
+        color: var(--orange);
+        line-height: 1;
+      }
+      .stat-l {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        margin-top: 5px;
+      }
+
+      /* ── SKILLS BAND ── */
+      .skills {
+        background: var(--dark);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+        padding: 52px 40px;
+        text-align: center;
+      }
+      .skills-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      .skills-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 20px;
+      }
+      .skills-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+      .pill {
+        font-size: 12px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 7px 16px;
+        border-radius: 30px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .pill:hover {
+        background: var(--orange);
+        color: #fff;
+        border-color: var(--orange);
+      }
+
+      /* ── SECTION WRAPPER ── */
+      .section {
+        padding: 80px 40px;
+      }
+      .section-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+
+      /* ── SECTION HEADING ── */
+      .section-heading {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+      .section-heading-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 12px;
+      }
+      .section-heading h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: var(--dark);
+      }
+
+      /* ── ABOUT CARDS ── */
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .about-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 36px 32px;
+        border-top: 3px solid var(--green);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+      }
+      .about-card:nth-child(2) {
+        border-top-color: var(--orange);
+      }
+      .about-card-num {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--green);
+        margin-bottom: 10px;
+      }
+      .about-card:nth-child(2) .about-card-num {
+        color: var(--orange);
+      }
+      .about-card-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+      .about-card-text {
+        font-size: 13px;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.7;
+      }
+
+      /* ── EDUCATION BAND ── */
+      .edu {
+        background: var(--green);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+        padding: 56px 40px;
+        text-align: center;
+      }
+      .edu-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      .edu-logo {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 24px;
+      }
+      .edu-logo svg {
+        width: 100%;
+        height: 100%;
+      }
+      .edu-school {
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 6px;
+        letter-spacing: -0.3px;
+      }
+      .edu-deg {
+        font-size: 13px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 16px;
+      }
+      .edu-award {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(248, 153, 44, 0.15);
+        border: 1px solid rgba(248, 153, 44, 0.3);
+        color: var(--orange);
+        font-size: 11px;
+        font-weight: 500;
+        padding: 5px 14px;
+        border-radius: 20px;
+      }
+
+      /* ── EXPERIENCE ── */
+      .exp {
+        padding: 80px 40px 100px;
+      }
+      .exp-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+
+      .exp-header {
+        text-align: center;
+        margin-bottom: 72px;
+      }
+      .exp-header-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 12px;
+      }
+      .exp-header h2 {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: var(--dark);
+      }
+      .exp-header-sub {
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--mid);
+        margin-top: 8px;
+      }
+
+      /* ── JOB CARD ── */
+      .job {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-bottom: 24px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 2px 24px rgba(0, 0, 0, 0.06);
+        opacity: 0;
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .job.from-left {
+        transform: translateX(-48px);
+      }
+      .job.from-right {
+        transform: translateX(48px);
+      }
+      .job.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Odd: content left, stat right */
+      .job-content {
+        background: #fff;
+        padding: 48px 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      .job-stat {
+        background: var(--cream);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        padding: 48px 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* Even: stat left, content right */
+      .job:nth-child(even) .job-content {
+        order: 2;
+        border-right: none;
+        border-left: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      .job:nth-child(even) .job-stat {
+        order: 1;
+      }
+
+      .job-num {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--orange);
+        margin-bottom: 6px;
+      }
+      .job-co {
+        font-size: clamp(20px, 2.5vw, 28px);
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
+      }
+      .job-role {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 20px;
+      }
+      .job-bullets {
+        list-style: none;
+      }
+      .job-bullets li {
+        font-size: 13.5px;
+        font-weight: 300;
+        color: var(--mid);
+        line-height: 1.7;
+        padding-left: 16px;
+        position: relative;
+        margin-bottom: 8px;
+      }
+      .job-bullets li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--orange);
+        font-size: 11px;
+        top: 2px;
+      }
+
+      .job-stat-inner {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .job-yr {
+        font-size: clamp(36px, 5vw, 56px);
+        font-weight: 700;
+        color: var(--green);
+        opacity: 0.22;
+        line-height: 1;
+        margin-bottom: 16px;
+        letter-spacing: -1.5px;
+      }
+      .job-hl {
+        font-size: clamp(22px, 3vw, 32px);
+        font-weight: 700;
+        color: var(--orange);
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+      .job-hl-sub {
+        font-size: 13px;
+        font-weight: 300;
+        color: #aaa;
+        line-height: 1.6;
+      }
+      .job-loc {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #ccc;
+        margin-top: 20px;
+      }
+
+      /* ── FOOTER ── */
+      .footer {
+        background: var(--dark);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+        padding: 72px 40px;
+        text-align: center;
+      }
+      .footer-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      .footer-logo {
+        width: 44px;
+        height: 44px;
+        margin: 0 auto 20px;
+      }
+      .footer-logo svg {
+        width: 100%;
+        height: 100%;
+      }
+      .footer-name {
+        font-size: clamp(28px, 4vw, 44px);
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -1.5px;
+        margin-bottom: 8px;
+      }
+      .footer-name em {
+        color: var(--orange);
+        font-style: normal;
+      }
+      .footer-sub {
+        font-size: 13px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 28px;
+      }
+      .footer-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--orange);
+        color: #fff;
+        padding: 13px 28px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+        transition: opacity 0.2s;
+      }
+      .footer-btn:hover {
+        opacity: 0.85;
+      }
+      .footer-btn svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      /* ── FLOATING NAV ── */
+      .float-nav {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .float-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          transform 0.15s,
+          opacity 0.15s,
+          background 0.15s;
+        text-decoration: none;
+      }
+      .float-btn:hover {
+        transform: scale(1.1);
+      }
+      .float-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .float-up,
+      .float-down {
+        background: rgba(26, 26, 26, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #fff;
+      }
+      .float-up:hover,
+      .float-down:hover {
+        background: var(--green);
+      }
+      .float-up,
+      .float-pdf,
+      .float-down {
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.3s,
+          transform 0.15s,
+          background 0.15s;
+      }
+      .float-up.show,
+      .float-pdf.show,
+      .float-down.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .float-pdf {
+        background: var(--orange);
+        color: #fff;
+        width: auto;
+        border-radius: 30px;
+        padding: 0 16px;
+        gap: 7px;
+        font-family: "Outfit", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        height: 44px;
+      }
+      .float-pdf:hover {
+        background: var(--green);
+      }
+      .float-pdf svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      @media (max-width: 680px) {
+        .float-nav {
+          bottom: 20px;
+          right: 16px;
+        }
+        .float-pdf span {
+          display: none;
+        }
+        .float-pdf {
+          width: 44px;
+          padding: 0;
+          border-radius: 50%;
+        }
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* ── MOBILE ── */
+      @media (max-width: 680px) {
+        .hero {
+          padding: 36px 24px 52px;
+        }
+        .hero-stats {
+          gap: 0;
+        }
+        .stat {
+          padding: 0 20px;
+        }
+        .skills {
+          padding: 40px 24px;
+        }
+        .section {
+          padding: 56px 24px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .edu {
+          padding: 48px 24px;
+        }
+        .exp {
+          padding: 56px 24px 72px;
+        }
+        .job {
+          grid-template-columns: 1fr;
+          border-radius: 16px;
+        }
+        .job-content,
+        .job-stat {
+          padding: 36px 28px;
+        }
+        .job:nth-child(even) .job-content {
+          order: unset;
+          border-left: none;
+          border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .job:nth-child(even) .job-stat {
+          order: unset;
+        }
+        .job-content {
+          border-right: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .footer {
+          padding: 52px 24px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header id="main-header">
-      <div class="container">
-        <img src="./images/JM-Logo.svg" alt="" />
-        <h1>John Masulonis</h1>
-        <h3>
-          <i class="fas fa-portrait"></i><span class="title">Resume</span>
-        </h3>
-        <p>
-          Senior digital designer with experience designing web and UI-driven experiences across sports technology, enterprise platforms, and marketing ecosystems. 
-          Strong visual design foundation with hands-on collaboration in UX, design systems, and agile product teams.
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-ring hero-ring-1"></div>
+      <div class="hero-ring hero-ring-2"></div>
+      <div class="hero-inner">
+        <div class="hero-top">
+          <div class="hero-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.02 65.02">
+              <path
+                fill="#f4efe6"
+                d="M32.52,0C14.57,0,0,14.55,0,32.5c0,17.95,14.55,32.51,32.5,32.52,17.95,0,32.51-14.55,32.52-32.5v-.02C65.02,14.55,50.47,0,32.52,0ZM32.52,62.05c-16.32,0-29.55-13.23-29.55-29.55S16.2,2.95,32.52,2.95s29.55,13.23,29.55,29.55-13.23,29.55-29.55,29.55h0Z"
+              />
+              <path
+                fill="rgba(255,255,255,0.1)"
+                d="M32.52,64c-17.39.02-31.5-14.05-31.52-31.44-.01-8.38,3.32-16.41,9.25-22.33,12.3-12.3,32.25-12.3,44.55,0,12.3,12.3,12.3,32.25,0,44.55-5.9,5.92-13.92,9.24-22.28,9.22ZM32.52,1.84C15.59,1.84,1.86,15.57,1.86,32.5s13.73,30.66,30.66,30.66,30.66-13.73,30.66-30.66c-.02-16.92-13.74-30.63-30.66-30.65h0Z"
+              />
+              <path
+                fill="none"
+                stroke="rgba(255,255,255,0.15)"
+                stroke-width=".5"
+                stroke-miterlimit="10"
+                d="M18.84,36.48v5h3.18v-25.29h3.73v26.6c-.02,1.36-1.13,2.45-2.49,2.45h-5.66c-1.35-.02-2.45-1.1-2.49-2.45v-6.31h3.73Z"
+              />
+              <path
+                fill="none"
+                stroke="rgba(255,255,255,0.15)"
+                stroke-width=".5"
+                stroke-miterlimit="10"
+                d="M41.84,45.24v-15.69l-3.08,9.45h-3l-2.82-9.47v15.71h-3.92v-29h3.74l4.44,14.52,4.61-14.52h3.73v29h-3.7Z"
+              />
+              <path
+                fill="#f4efe6"
+                d="M17.57,34.26v5h3.16V14h3.73v26.6c-.05,1.32-1.12,2.37-2.44,2.4h-5.69c-1.35-.02-2.45-1.1-2.49-2.45v-6.29h3.73Z"
+              />
+              <path
+                fill="#f4efe6"
+                d="M40.57,43v-15.67l-3.08,9.46h-3l-2.82-9.46v15.67h-3.89V14h3.74l4.44,14.52,4.61-14.52h3.73v29h-3.73Z"
+              />
+            </svg>
+          </div>
+          <a
+            class="hero-dl"
+            href="https://static1.squarespace.com/static/56c601dcab48de5338b4c517/t/699636293d6db70ade4882fd/1771451945667/John-Masulonis_Resume.pdf"
+            target="_blank"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path d="M12 3v13M6 11l6 6 6-6M3 21h18" />
+            </svg>
+            Download PDF
+          </a>
+        </div>
+
+        <div class="hero-eyebrow">Senior Digital Designer</div>
+        <div class="hero-name">John <em>Masulonis.</em></div>
+        <p class="hero-desc">
+          15+ years designing web and UI-driven experiences across sports
+          technology, enterprise platforms, and marketing ecosystems.
         </p>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-n">15+</div>
+            <div class="stat-l">Years</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">13</div>
+            <div class="stat-l">Companies</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">4</div>
+            <div class="stat-l">States</div>
+          </div>
+        </div>
       </div>
-    </header>
-    <section id="timeline">
-      <ul>
-        <li>
-          <div id="sidearmSports">
-            <h3>SIDEARM Sports</h3>
-            <h4>
-              Syracuse, NY <i>2022 - 2026</i><br />
-              Remote Web Designer
-            </h4>
-            <p>
-              &bull; Design and maintain collegiate athletics websites using a shared platform design system, adapting layouts and UI components to 
-              each school’s brand and content needs. Collaborate with UX, product, and development teams to deliver consistent, user-friendly web experiences across multiple programs.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>IBM</h3>
-            <h4>
-              Raleigh, NC. <i>2021 - 2022</i><br />
-              Visual Designer
-            </h4>
-            <p>
-              &bull; Blue Studio team member in an agile enviroment bringing
-              consumer-facing web page and product page design to life with
-              typography, illustration, iconography and photography
-            </p>
-            <p>
-              &bull; Contribute to Carbon design system, UI toolkits, and other
-              design material
-            </p>
-          </div>
-        </li>
-        <li>
-          <div id="ciscoSystems">
-            <h3>Cisco Systems</h3>
-            <h4>
-              San Jose, Cal. <i>2020 - 2020</i><br />
-              Remote Digital Designer
-            </h4>
-            <p>
-              &bull; Collaborate with 30 team members in various disciplines
-              such as such as Information Architecture, and Front-End
-              Development to design and stage various Cisco web pages.
-            </p>
-            <p>
-              &bull; Conceptualize, develop and resize digital media to include:
-              HTML5 banners, Icons, network diagrams, infographics including for
-              organic and paid Social Media
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Equitable Financial Firm</h3>
-            <h4>
-              Charlotte, NC. <i>2019 - 2020</i><br />
-              Remote Graphic Designer
-            </h4>
-            <p>
-              &bull; Part of a remote design team responsible for transforming
-              new corporate rebrand which was to launch in a 5 month period.
-            </p>
-            <p>
-              &bull; Integrated experience creating print, digital, and
-              experiential marketing collateral, email imagery, OLA, brochures,
-              trade show materials, etc.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>TriMark Digital</h3>
-            <h4>Raleigh, NC. <i>2018 - 2019</i><br />Senior Designer</h4>
-            <p>
-              &bull; Conceptualizing, managing and designing a wide range of
-              creative graphics to effectively meets the strategic objectives of
-              clients such as Golf Pride, Glass Depot and Revels Turf and
-              Tractor.
-            </p>
-            <p>
-              &bull; Collaborate with team of 12 designers & strategists in
-              order to provide the client with the highest quality of work
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Red Hat</h3>
-            <h4>Raleigh, NC. <i>2018 - 2018 </i> <br />Graphic Designer</h4>
-            <p>
-              &bull; Part of 4 team member marketing production team in an Agile
-              environment
-            </p>
-            <p>
-              &bull; Producing graphics and collateral for the Red Hat portfolio
-              as well as company events such as 2018 Red Hat Summit.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>McConnell Golf</h3>
-            <h4>Raleigh, NC. <i>2017 - 2017</i> <br />Graphic Designer</h4>
-            <p>
-              &bull; Create and manage various marketing and communications
-              campaigns such as newsletters and HTML email designs
-            </p>
-            <p>
-              &bull; Collaborated with membership directors of thirteen
-              championship golf courses throughout the Carolinas and Tennessee.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Advance Auto Parts</h3>
-            <h4>Raleigh, NC. <i>2016 - 2017 </i> <br />Digital Designer</h4>
-            <p>
-              &bull; Work with retail, digital, and B2B marketing teams to
-              envision and design for the evolving Advance Auto Parts brand
-            </p>
-            <p>
-              &bull; Produced mobile HTML emails, campaign graphics, brochures,
-              and advertising collateral
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Performance Bike</h3>
-            <h4>
-              Chapel Hill, NC. <i>2015 - 2015</i><br />
-              Web Graphic Designer
-            </h4>
-            <p>
-              &bull; Design, build, and optimize mobile emails to support
-              marketing brand campaigns, nurture programs, newsletters, and
-              product launches
-            </p>
-            <p>
-              &bull; Worked closely with the developers and marketing teams in
-              an Agile environment
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Global Value Commerce</h3>
-            <h4>
-              Raleigh, NC. <i>2013 - 2015</i><br />
-              Web Graphic Designer
-            </h4>
-            <p>
-              &bull; Orchestrated visual solutions to communicate multiple
-              specific ecommerce web marketing campaigns on a weekly basis, from
-              conceptualization to HTML/CSS implementation,
-            </p>
-            <p>
-              &bull; Valuable knowledge of relevant mobile user experience and
-              responsive design techniques.
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Jerry’s Artarama</h3>
-            <h4>
-              Raleigh, NC.
-              <i>2011 - 2013</i> <br />Graphic Designer
-            </h4>
-            <p>
-              &bull; Produce with team members to layout and design promotional
-              catalogs.
-            </p>
-            <p>
-              &bull; Design various marketing collateral and branding materials
-              as well as present a rebrand presentation for “Jerry’s Artarama”
-              brand
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Laser Image Printing and Marketing</h3>
-            <h4>Raleigh, NC. <i>2010 - 2011 </i> <br />Graphic Designer</h4>
-            <p>
-              &bull; Design, build, and optimize mobile emails to support
-              marketing brand campaigns, nurture programs, newsletters, and
-              product launches
-            </p>
-            <p>
-              &bull; Worked closely with the developers and marketing teams in
-              an Agile environment
-            </p>
-          </div>
-        </li>
-        <li>
-          <div>
-            <h3>Lipof &amp; McGee Advertising</h3>
-            <h4>
-              Plantation, FL <i>2007 - 2010</i> <br />
-              Graphic Designer
-            </h4>
-            <p>
-              &bull; Communicate various client’s, Warren Henry Automotive, Pet
-              Supermarket, Flanigans Restaurants, through smart creative
-              concepts as well as collaborate with team members and account
-              managers to execute quality design from concept to delivery
-            </p>
-            <p>
-              &bull; Worked with NHL Florida Panthers marketing team to produce
-              brand campaign for the 2007 - 2008 hockey season.
-            </p>
-          </div>
-        </li>
-      </ul>
     </section>
-    <!-- Skills and Education -->
-    <div class="skills-ed">
-      <div class="bars">
-        <h2 class="title-three">Skills</h2>
-        <div class="h-bars">
-          <div class="bar-one"></div>
-          <div class="bar-two"></div>
-          <div class="bar-three"></div>
-          <div class="bar-four"></div>
-          <div class="bar-five"></div>
-          <div class="clear"></div>
-        </div>
-      </div>
-      <div class="ed-software">
-        <div class="education">
-          <h2>Education</h2>
-          <h3>The Art Institute of Fort Lauderdale</h3>
-          <p>
-            Bachelor of Arts Degree in Graphic Design Fall 2005 <br />
-            <i>*Nominated for Best Digital Portfolio</i>
-          </p>
-        </div>
-        <div class="software">
-          <h2>Software</h2>
-          <p>Adobe Creative Suite, Sketch, Figma, Visual Studio Code</p>
+
+    <!-- SKILLS -->
+    <div class="skills">
+      <div class="skills-inner">
+        <div class="skills-label">Skills & Tools</div>
+        <div class="skills-pills">
+          <span class="pill">UI Design</span>
+          <span class="pill">Design Systems</span>
+          <span class="pill">Web Design</span>
+          <span class="pill">Brand Identity</span>
+          <span class="pill">Typography</span>
+          <span class="pill">Responsive Design</span>
+          <span class="pill">UX Collaboration</span>
+          <span class="pill">Agile</span>
+          <span class="pill">Email Design</span>
+          <span class="pill">Illustration</span>
+          <span class="pill">Adobe Creative Suite</span>
+          <span class="pill">Figma</span>
+          <span class="pill">Sketch</span>
+          <span class="pill">VS Code</span>
         </div>
       </div>
     </div>
 
-    <!-- Button -->
-    <div id="downloadBtn" class="container">
+    <!-- ABOUT -->
+    <div class="section">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-heading-label">About</div>
+          <h2>What I Bring to the Table</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-card-num">01</div>
+            <div class="about-card-title">Design Foundation</div>
+            <div class="about-card-text">
+              Strong visual design roots in typography, illustration, brand
+              identity, and layout across print and digital media.
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-num">02</div>
+            <div class="about-card-title">Systems Thinker</div>
+            <div class="about-card-text">
+              Hands-on experience with design systems at IBM Carbon, SIDEARM,
+              and multiple in-house brand platforms.
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-num">03</div>
+            <div class="about-card-title">Team Collaborator</div>
+            <div class="about-card-text">
+              Thrives in agile environments alongside developers, strategists,
+              UX leads, and marketing teams.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="edu">
+      <div class="edu-inner">
+        <div class="edu-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.02 65.02">
+            <path
+              fill="#f8992c"
+              d="M32.52,0C14.57,0,0,14.55,0,32.5c0,17.95,14.55,32.51,32.5,32.52,17.95,0,32.51-14.55,32.52-32.5v-.02C65.02,14.55,50.47,0,32.52,0ZM32.52,62.05c-16.32,0-29.55-13.23-29.55-29.55S16.2,2.95,32.52,2.95s29.55,13.23,29.55,29.55-13.23,29.55-29.55,29.55h0Z"
+            />
+            <path
+              fill="rgba(255,255,255,0.06)"
+              d="M32.52,64c-17.39.02-31.5-14.05-31.52-31.44-.01-8.38,3.32-16.41,9.25-22.33,12.3-12.3,32.25-12.3,44.55,0,12.3,12.3,12.3,32.25,0,44.55-5.9,5.92-13.92,9.24-22.28,9.22ZM32.52,1.84C15.59,1.84,1.86,15.57,1.86,32.5s13.73,30.66,30.66,30.66,30.66-13.73,30.66-30.66c-.02-16.92-13.74-30.63-30.66-30.65h0Z"
+            />
+            <path
+              fill="none"
+              stroke="rgba(255,255,255,0.12)"
+              stroke-width=".5"
+              stroke-miterlimit="10"
+              d="M18.84,36.48v5h3.18v-25.29h3.73v26.6c-.02,1.36-1.13,2.45-2.49,2.45h-5.66c-1.35-.02-2.45-1.1-2.49-2.45v-6.31h3.73Z"
+            />
+            <path
+              fill="none"
+              stroke="rgba(255,255,255,0.12)"
+              stroke-width=".5"
+              stroke-miterlimit="10"
+              d="M41.84,45.24v-15.69l-3.08,9.45h-3l-2.82-9.47v15.71h-3.92v-29h3.74l4.44,14.52,4.61-14.52h3.73v29h-3.7Z"
+            />
+            <path
+              fill="#f8992c"
+              d="M17.57,34.26v5h3.16V14h3.73v26.6c-.05,1.32-1.12,2.37-2.44,2.4h-5.69c-1.35-.02-2.45-1.1-2.49-2.45v-6.29h3.73Z"
+            />
+            <path
+              fill="#f8992c"
+              d="M40.57,43v-15.67l-3.08,9.46h-3l-2.82-9.46v15.67h-3.89V14h3.74l4.44,14.52,4.61-14.52h3.73v29h-3.73Z"
+            />
+          </svg>
+        </div>
+        <div class="edu-school">The Art Institute of Fort Lauderdale</div>
+        <div class="edu-deg">
+          Bachelor of Arts in Graphic Design — Fall 2005
+        </div>
+        <span class="edu-award">★ Nominated for Best Digital Portfolio</span>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="exp">
+      <div class="exp-inner">
+        <div class="exp-header">
+          <div class="exp-header-label">Work History</div>
+          <h2>13 Roles. 15+ Years.</h2>
+          <div class="exp-header-sub">
+            2007 – 2026 · Raleigh, Charlotte, San Jose, Fort Lauderdale &amp;
+            beyond
+          </div>
+        </div>
+
+        <!-- 01 -->
+        <div class="job from-left">
+          <div class="job-content">
+            <div class="job-num">Use Case 01</div>
+            <div class="job-co">SIDEARM Sports</div>
+            <div class="job-role">Remote Web Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Designed collegiate athletics websites using a shared platform
+                design system, adapting UI components to each school's brand.
+              </li>
+              <li>
+                Collaborated with UX, product, and dev teams to deliver
+                consistent experiences across multiple programs.
+              </li>
+            </ul>
+          </div>
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2022–26</div>
+              <div class="job-hl">Collegiate Athletics</div>
+              <div class="job-hl-sub">
+                Platform design system · Multi-school brand adaptation
+              </div>
+              <div class="job-loc">Syracuse, NY · Remote</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="job from-right">
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2021–22</div>
+              <div class="job-hl">Carbon Design System</div>
+              <div class="job-hl-sub">
+                IBM's enterprise design language · UI toolkits & component
+                libraries
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <div class="job-num">Use Case 02</div>
+            <div class="job-co">IBM</div>
+            <div class="job-role">Visual Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Blue Studio team member bringing consumer-facing web and product
+                pages to life with typography, illustration, and photography.
+              </li>
+              <li>Contributed to the Carbon design system and UI toolkits.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="job from-left">
+          <div class="job-content">
+            <div class="job-num">Use Case 03</div>
+            <div class="job-co">Cisco Systems</div>
+            <div class="job-role">Remote Digital Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Collaborated with 30+ team members across IA and Front-End
+                Development to design Cisco web pages.
+              </li>
+              <li>
+                Created HTML5 banners, icons, network diagrams, and infographics
+                for organic and paid social.
+              </li>
+            </ul>
+          </div>
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2020</div>
+              <div class="job-hl">30+ Team Members</div>
+              <div class="job-hl-sub">
+                Cross-functional collaboration across IA, UX, and front-end
+              </div>
+              <div class="job-loc">San Jose, CA · Remote</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="job from-right">
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2019–20</div>
+              <div class="job-hl">5-Month Rebrand</div>
+              <div class="job-hl-sub">
+                Full corporate identity across print, digital & experiential
+              </div>
+              <div class="job-loc">Charlotte, NC · Remote</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <div class="job-num">Use Case 04</div>
+            <div class="job-co">Equitable Financial</div>
+            <div class="job-role">Remote Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Led design for a major corporate rebrand launching in a 5-month
+                window.
+              </li>
+              <li>
+                Created print, digital, and experiential collateral — email,
+                OLA, brochures, trade show materials.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="job from-left">
+          <div class="job-content">
+            <div class="job-num">Use Case 05</div>
+            <div class="job-co">TriMark Digital</div>
+            <div class="job-role">Senior Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Designed creative for clients including Golf Pride, Glass Depot,
+                and Revels Turf and Tractor.
+              </li>
+              <li>Collaborated with a team of 12 designers and strategists.</li>
+            </ul>
+          </div>
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2018–19</div>
+              <div class="job-hl">12-Person Team</div>
+              <div class="job-hl-sub">
+                Agency work across multiple client brands and industries
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="job from-right">
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2018</div>
+              <div class="job-hl">Red Hat Summit</div>
+              <div class="job-hl-sub">
+                Marketing production for one of open source's biggest annual
+                events
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <div class="job-num">Use Case 06</div>
+            <div class="job-co">Red Hat</div>
+            <div class="job-role">Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                4-person agile marketing production team producing graphics for
+                the Red Hat portfolio.
+              </li>
+              <li>Key contributor for the 2018 Red Hat Summit campaign.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="job from-left">
+          <div class="job-content">
+            <div class="job-num">Use Case 07</div>
+            <div class="job-co">McConnell Golf</div>
+            <div class="job-role">Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Managed newsletters and HTML email campaigns for 13 championship
+                golf courses across the Carolinas and Tennessee.
+              </li>
+            </ul>
+          </div>
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2017</div>
+              <div class="job-hl">13 Courses</div>
+              <div class="job-hl-sub">
+                Championship golf across NC, SC, and Tennessee
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="job from-right">
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2016–17</div>
+              <div class="job-hl">Retail · Digital · B2B</div>
+              <div class="job-hl-sub">
+                Multi-channel design across three distinct marketing divisions
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <div class="job-num">Use Case 08</div>
+            <div class="job-co">Advance Auto Parts</div>
+            <div class="job-role">Digital Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Designed for the evolving brand across retail, digital, and B2B
+                marketing channels.
+              </li>
+              <li>
+                Produced mobile HTML emails, campaign graphics, and advertising
+                collateral.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 09 -->
+        <div class="job from-left">
+          <div class="job-content">
+            <div class="job-num">Use Case 09</div>
+            <div class="job-co">Performance Bike</div>
+            <div class="job-role">Web Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Designed and optimized mobile emails supporting brand campaigns,
+                nurture programs, and product launches.
+              </li>
+            </ul>
+          </div>
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2015</div>
+              <div class="job-hl">Mobile-First Email</div>
+              <div class="job-hl-sub">
+                Responsive HTML email design for ecommerce campaigns
+              </div>
+              <div class="job-loc">Chapel Hill, NC</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="job from-right">
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2013–15</div>
+              <div class="job-hl">Weekly Campaigns</div>
+              <div class="job-hl-sub">
+                Concept to HTML/CSS — ecommerce at scale
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <div class="job-num">Use Case 10</div>
+            <div class="job-co">Global Value Commerce</div>
+            <div class="job-role">Web Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Orchestrated weekly ecommerce marketing campaigns from concept
+                through HTML/CSS implementation.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="job from-left">
+          <div class="job-content">
+            <div class="job-num">Use Case 11</div>
+            <div class="job-co">Jerry's Artarama</div>
+            <div class="job-role">Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Designed promotional catalogs, marketing collateral, and
+                presented a full rebrand for the Jerry's Artarama brand.
+              </li>
+            </ul>
+          </div>
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2011–13</div>
+              <div class="job-hl">Full Rebrand</div>
+              <div class="job-hl-sub">
+                End-to-end brand identity for a national art supply retailer
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="job from-right">
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2010–11</div>
+              <div class="job-hl">Agile Production</div>
+              <div class="job-hl-sub">
+                Fast-paced campaign design in close dev collaboration
+              </div>
+              <div class="job-loc">Raleigh, NC</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <div class="job-num">Use Case 12</div>
+            <div class="job-co">Laser Image Printing</div>
+            <div class="job-role">Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Designed mobile emails and campaign materials alongside
+                developers and marketing teams in an agile environment.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="job from-left">
+          <div class="job-content">
+            <div class="job-num">Use Case 13</div>
+            <div class="job-co">Lipof &amp; McGee Advertising</div>
+            <div class="job-role">Graphic Designer</div>
+            <ul class="job-bullets">
+              <li>
+                Developed creative for Warren Henry Automotive, Pet Supermarket,
+                and Flanigan's Restaurants.
+              </li>
+              <li>
+                Produced brand campaign for the NHL Florida Panthers' 2007–08
+                season.
+              </li>
+            </ul>
+          </div>
+          <div class="job-stat">
+            <div class="job-stat-inner">
+              <div class="job-yr">2007–10</div>
+              <div class="job-hl">NHL Florida Panthers</div>
+              <div class="job-hl-sub">
+                Brand campaign for the 2007–08 hockey season
+              </div>
+              <div class="job-loc">Plantation, FL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.02 65.02">
+            <path
+              fill="rgba(255,255,255,0.3)"
+              d="M32.52,0C14.57,0,0,14.55,0,32.5c0,17.95,14.55,32.51,32.5,32.52,17.95,0,32.51-14.55,32.52-32.5v-.02C65.02,14.55,50.47,0,32.52,0ZM32.52,62.05c-16.32,0-29.55-13.23-29.55-29.55S16.2,2.95,32.52,2.95s29.55,13.23,29.55,29.55-13.23,29.55-29.55,29.55h0Z"
+            />
+            <path
+              fill="none"
+              stroke="rgba(255,255,255,0.08)"
+              stroke-width=".5"
+              stroke-miterlimit="10"
+              d="M18.84,36.48v5h3.18v-25.29h3.73v26.6c-.02,1.36-1.13,2.45-2.49,2.45h-5.66c-1.35-.02-2.45-1.1-2.49-2.45v-6.31h3.73Z"
+            />
+            <path
+              fill="none"
+              stroke="rgba(255,255,255,0.08)"
+              stroke-width=".5"
+              stroke-miterlimit="10"
+              d="M41.84,45.24v-15.69l-3.08,9.45h-3l-2.82-9.47v15.71h-3.92v-29h3.74l4.44,14.52,4.61-14.52h3.73v29h-3.7Z"
+            />
+            <path
+              fill="rgba(255,255,255,0.3)"
+              d="M17.57,34.26v5h3.16V14h3.73v26.6c-.05,1.32-1.12,2.37-2.44,2.4h-5.69c-1.35-.02-2.45-1.1-2.49-2.45v-6.29h3.73Z"
+            />
+            <path
+              fill="rgba(255,255,255,0.3)"
+              d="M40.57,43v-15.67l-3.08,9.46h-3l-2.82-9.46v15.67h-3.89V14h3.74l4.44,14.52,4.61-14.52h3.73v29h-3.73Z"
+            />
+          </svg>
+        </div>
+        <div class="footer-name">John <em>Masulonis.</em></div>
+        <div class="footer-sub">
+          Senior Digital Designer · Available for new opportunities
+        </div>
+        <a
+          class="footer-btn"
+          href="https://static1.squarespace.com/static/56c601dcab48de5338b4c517/t/699636293d6db70ade4882fd/1771451945667/John-Masulonis_Resume.pdf"
+          target="_blank"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M12 3v13M6 11l6 6 6-6M3 21h18" />
+          </svg>
+          Download Resume PDF
+        </a>
+      </div>
+    </footer>
+
+    <!-- FLOATING NAV -->
+    <nav class="float-nav" aria-label="Page navigation">
+      <button
+        class="float-btn float-up"
+        id="floatUp"
+        aria-label="Scroll to top"
+        title="Back to top"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </button>
       <a
+        class="float-btn float-pdf"
+        id="floatPdf"
         href="https://static1.squarespace.com/static/56c601dcab48de5338b4c517/t/699636293d6db70ade4882fd/1771451945667/John-Masulonis_Resume.pdf"
         target="_blank"
-        class="btnShake"
-        >Hit the Download Button!</a
+        aria-label="Download PDF resume"
+        title="Download Resume PDF"
       >
-    </div>
-    <a class="top-link hide" href="" id="js-top">
-      <i class="fas fa-arrow-up"></i>
-    </a>
-    <!-- Scripts  -->
-    <script src="./js/scripts.js"></script>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path d="M12 3v13M6 11l6 6 6-6M3 21h18" />
+        </svg>
+        <span>PDF</span>
+      </a>
+      <button
+        class="float-btn float-down"
+        id="floatDown"
+        aria-label="Scroll down"
+        title="Scroll down"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+    </nav>
+
+    <script>
+      // Job card scroll animations
+      const jobs = document.querySelectorAll(".job");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      jobs.forEach((j) => io.observe(j));
+
+      // Floating nav logic
+      const floatUp = document.getElementById("floatUp");
+      const floatDown = document.getElementById("floatDown");
+      const floatPdf = document.getElementById("floatPdf");
+
+      window.addEventListener("scroll", () => {
+        const scrolled = window.scrollY > 300;
+        const nearBottom =
+          window.innerHeight + window.scrollY >=
+          document.body.scrollHeight - 400;
+
+        // Up + PDF: show once scrolled, PDF hides near bottom
+        floatUp.classList.toggle("show", scrolled);
+        floatPdf.classList.toggle("show", scrolled && !nearBottom);
+
+        // Down arrow: show when not near bottom, hide when near bottom
+        floatDown.classList.toggle("show", !nearBottom);
+        floatDown.style.pointerEvents = nearBottom ? "none" : "all";
+      });
+
+      floatUp.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      floatDown.addEventListener("click", () => {
+        window.scrollBy({ top: window.innerHeight * 0.85, behavior: "smooth" });
+      });
+    </script>
   </body>
 </html>
